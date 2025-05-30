@@ -1,0 +1,9 @@
+scikit-learn
+boto3
+numpy
+pandas
+matplotlib
+requests
+pydub
+pyqt5
+pymilvus
