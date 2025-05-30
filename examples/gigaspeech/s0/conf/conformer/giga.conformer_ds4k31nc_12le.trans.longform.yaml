@@ -1,0 +1,134 @@
+accum_grad: 1
+cmvn: global_cmvn
+cmvn_conf:
+  cmvn_file: /shared/jp/up.rev-wenet/examples/gigaspeech/s0/gigaspeech_cmvn_and_tok/global_cmvn
+  is_json_cmvn: true
+ctc: ctc
+ctc_conf:
+  ctc_blank_id: 0
+dataset: asr
+dataset_conf:
+  batch_conf:
+    batch_type: dynamic
+    max_frames_in_batch: 20000
+  fbank_conf:
+    dither: 1
+    frame_length: 25
+    frame_shift: 10
+    num_mel_bins: 80
+  filter_conf:
+    max_length: 5000
+    min_length: 100
+    token_max_length: 360
+    token_min_length: 1
+  merge_utterances: true
+  merge_utterances_conf:
+    add_sw_tag: false
+    enable_after_epoch: -1
+    max_audio_len_secs: 15
+    min_audio_len_acceptable_secs: 0.3
+    min_audio_len_secs: 10
+  resample_conf:
+    resample_rate: 16000
+  shuffle: true
+  shuffle_conf:
+    shuffle_size: 2500
+  sort: true
+  sort_conf:
+    sort_size: 1000
+  spec_aug: true
+  spec_aug_conf:
+    max_f: 10
+    max_t: 50
+    num_f_mask: 2
+    num_t_mask: 3
+  speed_perturb: false
+  uppercase: true
+  use_rev_tk: true
+decoder: bitransformer
+decoder_conf:
+  attention_heads: 8
+  dropout_rate: 0.1
+  linear_units: 2048
+  num_blocks: 3
+  positional_dropout_rate: 0.1
+  r_num_blocks: 3
+  self_attention_dropout_rate: 0.0
+  src_attention_dropout_rate: 0.0
+dtype: fp32
+encoder: conformer
+encoder_conf:
+  activation_type: swish
+  attention_dropout_rate: 0.0
+  attention_heads: 8
+  cnn_module_kernel: 31
+  cnn_module_norm: layer_norm
+  dropout_rate: 0.1
+  input_layer: conv2d
+  linear_units: 2048
+  normalize_before: true
+  num_blocks: 12
+  output_size: 512
+  pos_enc_layer_type: rel_pos
+  positional_dropout_rate: 0.1
+  use_cnn_module: true
+grad_clip: 0.1
+input_dim: 80
+joint_conf:
+  activation: tanh
+  enc_output_size: 512
+  join_dim: 640
+  joint_mode: add
+  postjoin_linear: false
+  pred_output_size: 640
+  prejoin_linear: true
+log_interval: 100
+max_epoch: 60
+model: transducer
+model_conf:
+  attention_weight: 0.5
+  ctc_weight: 0.2
+  length_normalized_loss: false
+  lsm_weight: 0.1
+  reverse_weight: 0.3
+  transducer_weight: 0.3
+optim: adam
+optim_conf:
+  lr: 0.0005 #0.001
+predictor: rnn
+predictor_conf:
+    bias: true
+    dropout: 0.1
+    embed_dropout: 0.1
+    embed_size: 640
+    hidden_size: 640
+    num_layers: 2
+    output_size: 640
+    rnn_type: lstm
+save_states: model_only
+scheduler: warmuplr
+scheduler_conf:
+  warmup_steps: 100000
+snapshot_saving_conf:
+  run_tag: giga.conformer_12le.longform
+  save_interval: 3000
+  save_optimizer_every: 10
+  save_to_wandb: true
+  use_named_snapshots: false
+throw_on_early_termination: true
+tokenizer: rev_bpe
+tokenizer_conf:
+  bpe_path: /shared/jp/up.rev-wenet/examples/gigaspeech/s0/gigaspeech_cmvn_and_tok/train_xl_unigram5000.model
+  is_multilingual: false
+  non_lang_syms_path: null
+  num_languages: 1
+  special_tokens:
+    <blank>: 0
+    <eos>: 2
+    <sos>: 2
+    <unk>: 1
+  split_with_space: false
+  symbol_table_path: /shared/jp/up.rev-wenet/examples/gigaspeech/s0/gigaspeech_cmvn_and_tok/units.txt
+train_engine: torch_ddp
+use_amp: false
+vocab_size: 4999
