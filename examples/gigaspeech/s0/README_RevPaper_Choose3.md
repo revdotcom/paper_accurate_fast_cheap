@@ -5,12 +5,12 @@ Notes from the paper  Accurate, fast, cheap: choose three.
 
 # Setup
 
- * conda & wenet requirements.txt
- * optimized_transducer --> Is the torchscript branch required for the paper? Or is it just for speech2ctm?
- * mamba ? --> I (Jp) propose we don't release that one, or perhaps we submit a PR to the original mamba repo with it and link to that PR?
- * install and compile fstalign
+ * conda & wenet requirements.txt, follow regular wenet 
  * use `. path.sh` once the conda/micromamba environment is activated.
+ * install and compile fstalign, follow instructions from the repository
 
+Note: for mamba, we had slight modifications done in their repository in order to wrap the bidirectional 
+      configuration.  We will submit them to the original project repository.
 
 # Data
   Follow regular WeNet GigaSpeech recipe to prepare the data into segmented shards.  
@@ -20,17 +20,17 @@ Also, keep track of dev and test full audios and convert them to regular 16kHz P
 
 ## Short-Form base experiments
 
-** I guess we should change "martin" for "shortform" everywhere
+** Changed "martin" to "shortform" everywhere
 
-1. baseline MHA conformer : conf/conformer/giga.conformer_ds4k31nc_12le.trans.martin.cfg
+1. baseline MHA conformer : conf/conformer/giga.conformer_ds4k31nc_12le.trans.shortform.cfg
 1. mamba-2 : 
-    1. mamba-2, uni       : conf/mamba/giga.mamba_ds4k31nc_12le.trans.martin.cfg
-    1. mamba-2, bi        : conf/mamba/giga.mambabi_ds4k31nc_12le.trans.martin.cfg
+    1. mamba-2, uni       : conf/mamba/giga.mamba_ds4k31nc_12le.trans.shortform.cfg
+    1. mamba-2, bi        : conf/mamba/giga.mambabi_ds4k31nc_12le.trans.shortform.cfg
 1. RWKV:
-    1. rwkv, uni          : conf/rwkv/giga.rwkv_ds4k31nc_12le.trans.martin.cfg
-    1. rwkv, bi           : conf/rwkv/giga.rwkvbi_ds4k31nc_12le.trans.martin.cfg
-    1. rwkv, DirDrop-R2L  : conf/rwkv/giga.rwkvdld_ds4k31nc_12le.trans.martin.cfg
-    1. rwkv, DirDrop-Both : giga.rwkvbi_dldb_ds4k31nc_12le.trans.martin.cfg
+    1. rwkv, uni          : conf/rwkv/giga.rwkv_ds4k31nc_12le.trans.shortform.cfg
+    1. rwkv, bi           : conf/rwkv/giga.rwkvbi_ds4k31nc_12le.trans.shortform.cfg
+    1. rwkv, DirDrop-R2L  : conf/rwkv/giga.rwkvdld_ds4k31nc_12le.trans.shortform.cfg
+    1. rwkv, DirDrop-Both : giga.rwkvbi_dldb_ds4k31nc_12le.trans.shortform.cfg
 
 ## Long-Form base experiments
 
