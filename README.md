@@ -1,7 +1,6 @@
+# Code release for the paper: Accurate, fast, cheap, choose three!
 
-# Code release for the paper : Accurate, fast, cheap, choose three !
-
-We borrow or rely on :
+We borrow or rely on:
 1. a codebase derived from [WeNet e2e repo](https://github.com/wenet-e2e/wenet/)
 1. derived code from [Mamba-SSM](https://github.com/state-spaces/mamba)
 1. derived code from [optimized_transducer](https://github.com/csukuangfj/optimized_transducer)
