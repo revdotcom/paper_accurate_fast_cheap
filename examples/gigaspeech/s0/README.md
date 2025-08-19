@@ -1,3 +1,7 @@
+
+
+Note: This is the original WeNet accuracy report, not releated to Rev's paper : Accurate, fast, cheap.
+
 # GigaSpeech
 A Large, modern and evolving dataset for automatic speech recognition. More details about GigaSpeech can be found:  https://github.com/SpeechColab/GigaSpeech
 
